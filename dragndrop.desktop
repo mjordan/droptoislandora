@@ -3,5 +3,5 @@ Name=Add to Islandora
 Version=1.0
 Exec=/usr/bin/python3 /home/mark/Documents/hacking/droptoislandora/droptoislandora.py
 Icon=/home/mark/Documents/hacking/droptoislandora/icon.png
-Terminal=true
+Terminal=false
 Type=Application

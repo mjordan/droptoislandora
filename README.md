@@ -1,6 +1,6 @@
 # Drop to Islandora
 
-A proof of concept application for a headless Islandora. Provides a desktop shortcut for Ubuntu that lets users "drop a file into Islandora."
+A proof of concept application for a headless Islandora. Provides a desktop shortcut for Ubuntu that lets users drop a file into Islandora.
 
 
 ## Requirements
@@ -31,7 +31,14 @@ Change the config variables at the top of the `droptoislandora.py` script to mat
 
 ### Dragging files up to Islandora
 
-At this point, everything should be ready. If you drag and drop a file onto the desktop icon, your file will be ingested into Islandora.
+At this point, everything should be ready. If you drag and drop a file onto the desktop icon:
+
+![Drop to Islandora icon](icon.png)
+
+your file will be ingested into Islandora and you will see a notification indicating its URL:
+
+![Notification indicating URL](notification.png)
+
 
 ## Contributing
 
