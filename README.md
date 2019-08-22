@@ -1,6 +1,6 @@
 # Drop to Islandora
 
-A proof of concept application for a headless Islandora. Provides a desktop shortcut for Ubuntu that lets users drop a file into Islandora.
+A proof of concept application demonstrating a headless Islandora. Provides a desktop shortcut for Ubuntu that lets users drop a file into Islandora, where a minimal node plus media is created.
 
 
 ## Requirements
@@ -21,13 +21,14 @@ A proof of concept application for a headless Islandora. Provides a desktop shor
 
 1. Place the `dragndrop.desktop` file in your Desktop folder.
 1. Right click on the shortcut icon, and go to the "Properties" item.
-  1. Adjust the path in the "Command" field so it points to your copy of `droptoislandora.py`.
-  1. Go to the "Permissions" tab and check "Allow executing file as a program".
+    1. Adjust the path in the "Command" field so it points to your copy of `droptoislandora.py`.
+    1. Go to the "Permissions" tab and check "Allow executing file as a program".
 
 
 ### Preparing your Python script
 
-Change the config variables at the top of the `droptoislandora.py` script to match your environment.
+1. If necessary, change the config variables at the top of the `droptoislandora.py` script to match your Islandora instance.
+1. If necessary, change the taxonomy term IDs in the section that starts with the comment `# Note: Taxonomy IDs for "Islandora Models" are hard coded here.` to match your Islandora instance.
 
 ### Dragging files up to Islandora
 
