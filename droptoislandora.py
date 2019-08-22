@@ -37,11 +37,6 @@ if mimetype[0] in video_mimetypes:
     media_type = 'video'
     node_model_tid = '25'
 
-# Get some info about the file, so we can add it to the description field for demo purposes.
-
-
-
-
 # Create the node.
 node_headers = {
     'Content-Type': 'application/json'
@@ -77,7 +72,7 @@ else:
 	subprocess.call(['notify-send', 'Error!', 'Islandora object not created'])
 	sys.exit
 
-# If there is a media file, add it.
+# Add media to new node.
 if node_response.status_code == 201:
 	media_endpoint_path = ('/media/' +
 	                       media_type +
