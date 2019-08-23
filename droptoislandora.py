@@ -3,10 +3,13 @@
 import os
 import sys
 import mimetypes
+import getpass
+import socket
+import hashlib
 import requests
 import subprocess
 
-# Hard-coded (!) config variables. In a production tool, these would be stored/managed elsewhere.
+# Hard-coded config variables. In a production tool, these would be stored/managed elsewhere.
 host = "http://localhost:8000"
 username = "admin"
 password = "islandora"
@@ -37,6 +40,19 @@ if mimetype[0] in video_mimetypes:
     media_type = 'video'
     node_model_tid = '25'
 
+# Get some basic metadata. First, a 'creator'.
+user = getpass.getuser()
+user_host = socket.getfqdn()
+creator = user + '@' + user_host
+# Then, some basic technical metadata about the file.
+cmd = ["file", filepath]
+file_output = subprocess.check_output(cmd)
+techmd = file_output.decode().strip()
+# Then the SHA256 hash.
+with open(filepath,"rb") as f:
+    bytes = f.read()
+    hash = hashlib.sha256(bytes).hexdigest();
+
 # Create the node.
 node_headers = {
     'Content-Type': 'application/json'
@@ -56,7 +72,10 @@ node_json = {
          'target_type': 'taxonomy_term'}
     ],
     'field_description': [
-        {'value': "Ingested using the 'Drop to Islandora' prototype tool."}
+        {'value': 'Object ingested by: ' + creator + '.' + "\n\n"  + 'Basic technical metadata: ' + techmd + "\n\n" + 'SHA256 hash: ' + hash}
+    ],
+    'field_identifier': [
+        {'value': filepath}
     ],    
 }
 
